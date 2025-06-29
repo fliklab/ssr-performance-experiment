@@ -46,9 +46,9 @@ export default function FeedPage() {
       ) : feed.length === 0 ? (
         <p>피드 데이터가 없습니다.</p>
       ) : (
-        <ul style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center' }}>
           {feed.map(item => (
-            <li
+            <div
               key={item.id}
               style={{ border: '1px solid #eee', borderRadius: 8, padding: 16, minWidth: 200 }}
             >
@@ -56,9 +56,9 @@ export default function FeedPage() {
               <h2 style={{ fontSize: 18, margin: '12px 0 4px' }}>{item.title}</h2>
               <p style={{ margin: 0 }}>{item.price.toLocaleString()}원</p>
               <Button style={{ marginTop: 8 }}>상세보기</Button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

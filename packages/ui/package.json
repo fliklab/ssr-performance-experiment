@@ -4,9 +4,22 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc --project tsconfig.json"
+    "build": "tsc --project tsconfig.json",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "private": true,
   "description": "공통 UI 컴포넌트 패키지 (base/complex 구조)",
-  "sideEffects": false
+  "sideEffects": false,
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@vanilla-extract/vite-plugin": "^5.0.7",
+    "@vitejs/plugin-react": "^4.6.0",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.4"
+  },
+  "type": "module"
 }
