@@ -90,3 +90,12 @@ ssr-performance-test/
 - 코드 일관성, 관심사 분리, 유지보수성, 성능 최적화 최우선
 - 다국어, 크로스브라우징, 모바일 대응 고려
 - 각 앱의 README에 데이터 흐름/렌더링 절차/구현 방식 명확히 기술
+
+## [2024-06-09] feed-ssr1-next SSR1 구조 및 테스트 환경 이슈
+
+- feed-ssr1-next 앱 scaffold 및 getServerSideProps 기반 SSR1 데이터 패칭 구조 구현
+- 공통 UI, utils 패키지 workspace 연동
+- next.config.ts에 이미지 도메인, transpilePackages, dotenv 적용
+- 테스트 환경(vitest)에서 describe/expect 글로벌 인식 문제 발생 → 앱별 독립적 vitest 환경 필요성 확인
+- 앞으로 모든 Feed 앱(CSR/SSR/Static)은 동일한 UI 컴포넌트/레이아웃을 재사용하는 구조로 통일 예정
+- 디자인 시스템/컴포넌트 개선 후 CSR부터 SSR, Static에 순차 적용 예정
