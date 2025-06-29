@@ -16,7 +16,8 @@ interface FeedItem {
   price: number;
 }
 
-const MOCK_API_DOMAIN = process.env.NEXT_PUBLIC_MOCK_API_DOMAIN;
+const MOCK_API_DOMAIN =
+  process.env.NEXT_PUBLIC_MOCK_API_DOMAIN || 'https://ssr-mock-api.vercel.app';
 
 export default function FeedPage() {
   const [feed, setFeed] = useState<FeedItem[]>([]);
@@ -24,16 +25,22 @@ export default function FeedPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`${MOCK_API_DOMAIN}/api/feed`)
+    const apiUrl = '/api/feed'; // 내부 프록시 API 사용
+    console.log('Fetching from:', apiUrl);
+    console.log('Environment variable:', MOCK_API_DOMAIN);
+    fetch(apiUrl)
       .then(res => {
-        if (!res.ok) throw new Error('API 오류');
+        console.log('Response status:', res.status);
+        if (!res.ok) throw new Error(`API 오류: ${res.status}`);
         return res.json();
       })
       .then(data => {
-        setFeed(data);
+        console.log('Received data:', data);
+        setFeed(Array.isArray(data) ? data : []);
         setLoading(false);
       })
-      .catch(() => {
+      .catch(error => {
+        console.error('Fetch error:', error);
         setError('피드 데이터를 불러오지 못했습니다.');
         setLoading(false);
       });
