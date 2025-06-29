@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Brutal Banner",
+    "image": "/mock-images/banner1.png",
+    "price": 12000
+  },
+  {
+    "id": 2,
+    "title": "Rounded Product",
+    "image": "/mock-images/product1.png",
+    "price": 34000
+  }
+]
