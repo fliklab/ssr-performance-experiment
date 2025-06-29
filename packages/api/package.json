@@ -1,9 +1,8 @@
 {
   "name": "@ssr-performance/api",
   "version": "0.1.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "private": true,
   "description": "Vercel serverless 기반 mock API 패키지",
-  "sideEffects": false
+  "sideEffects": false,
+  "scripts": {}
 }

@@ -1,11 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "rootDir": ".",
     "outDir": "dist",
-    "rootDir": "src",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true
   },
-  "include": ["src"]
+  "include": ["api", "mock-data"]
 }
