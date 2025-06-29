@@ -12,7 +12,7 @@ export interface PageLayoutProps {
 
 export const PageLayout: React.FC<PageLayoutProps> = ({
   children,
-  maxWidth = 'xl',
+  maxWidth = 'md',
   header,
   footer,
   className,

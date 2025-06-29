@@ -48,7 +48,7 @@ export default function FeedPage() {
 
   return (
     <div className={themeClass}>
-      <PageLayout maxWidth="xl" header={<Navigation />} footer={<Footer />}>
+      <PageLayout header={<Navigation />} footer={<Footer />}>
         <div style={{ padding: '32px 0' }}>
           <h1
             style={{

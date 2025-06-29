@@ -1,64 +1,46 @@
-// 임시로 직접 구현된 컴포넌트를 사용합니다
-interface CardProps {
-  children: React.ReactNode;
-  className?: string;
-}
+// CSR 방식과 동일한 UI 컴포넌트 import
+import { Card } from '@ui/base/Card';
+import { Typography } from '@ui/base/Typography';
+import { Button } from '@ui/base/Button';
+import { PageLayout } from '@ui/layouts/PageLayout';
+import { themeClass } from '@ui/styles';
+import { Navigation } from '../../components/Navigation';
+import { Footer } from '../../components/Footer';
 
-const Card = ({ children, className }: CardProps) => (
-  <div className={`border rounded-lg shadow-md bg-white ${className || ''}`}>{children}</div>
-);
-
-interface TypographyProps {
-  children: React.ReactNode;
-  variant?: 'heading' | 'body' | 'caption';
-  style?: React.CSSProperties;
-}
-
-const Typography = ({ children, variant = 'body', style }: TypographyProps) => {
-  const className =
-    variant === 'heading'
-      ? 'text-lg font-semibold'
-      : variant === 'caption'
-        ? 'text-sm text-gray-600'
-        : 'text-base';
-
-  return (
-    <span className={className} style={style}>
-      {children}
-    </span>
-  );
-};
-
-// 피드 아이템 타입 정의
-interface FeedItem {
+// 외부 API 아이템 타입 정의
+interface ExternalFeedItem {
   id: number;
   title: string;
-  content: string;
-  author: string;
-  timestamp: string;
-  tags: string[];
+  image: string;
+  price: number;
 }
 
 // App Router의 Server Component를 활용한 SSR2 방식
-// 서버에서 직접 데이터를 fetch하여 렌더링
-async function getFeedData(): Promise<{ items: FeedItem[] }> {
+// 서버에서 외부 API를 직접 호출하여 렌더링
+async function getFeedData(): Promise<{ items: ExternalFeedItem[] }> {
   try {
-    // 환경에 따라 API URL 설정
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'http://localhost:3000';
+    console.log('SSR2: Fetching data from external API...');
 
-    const response = await fetch(`${baseUrl}/api/feed`, {
+    // 외부 API를 직접 호출 (SSR2의 핵심 특징)
+    const response = await fetch('https://ssr-mock-api.vercel.app/api/feed', {
       cache: 'no-store', // 캐싱 비활성화로 항상 최신 데이터 fetch
+      headers: {
+        'User-Agent': 'Next.js SSR2 Server Component',
+      },
     });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch feed data');
+      console.error('External API error:', response.status, response.statusText);
+      throw new Error(`Failed to fetch feed data: ${response.status}`);
     }
 
-    return await response.json();
+    const externalData = await response.json();
+    console.log('SSR2: Successfully fetched', externalData?.length || 0, 'items');
+
+    // 외부 API 데이터를 그대로 반환 (FeedCard에서 직접 사용)
+    return { items: externalData };
   } catch (error) {
-    console.error('Feed data fetch error:', error);
+    console.error('SSR2 Feed data fetch error:', error);
     return { items: [] };
   }
 }
@@ -67,50 +49,80 @@ export default async function FeedPage() {
   const feedData = await getFeedData();
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Feed (SSR2 - App Router Server Components)</h1>
+    <div className={themeClass}>
+      <PageLayout header={<Navigation />} footer={<Footer />}>
+        <div style={{ padding: '32px 0' }}>
+          <h1
+            style={{
+              fontSize: '32px',
+              fontWeight: '700',
+              color: '#1f2937',
+              marginBottom: '8px',
+              textAlign: 'center',
+            }}
+          >
+            피드 목록
+          </h1>
+          <p
+            style={{
+              color: '#6b7280',
+              textAlign: 'center',
+              marginBottom: '32px',
+            }}
+          >
+            SSR2 방식으로 로드된 피드 데이터입니다.
+          </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {feedData.items.map(item => (
-          <Card key={item.id} className="overflow-hidden">
-            <img
-              src={`/api/img/${item.id}`}
-              alt={item.title}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <Typography variant="heading" style={{ marginBottom: '8px' }}>
-                {item.title}
-              </Typography>
-              <Typography variant="body" style={{ marginBottom: '12px' }}>
-                {item.content}
-              </Typography>
-              <div className="flex justify-between items-center text-sm text-gray-500">
-                <span>{item.author}</span>
-                <span>{new Date(item.timestamp).toLocaleDateString()}</span>
-              </div>
-              {item.tags.length > 0 && (
-                <div className="mt-2 flex flex-wrap gap-1">
-                  {item.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+              gap: '24px',
+              marginTop: '32px',
+            }}
+          >
+            {feedData.items.map(item => (
+              <Card key={item.id}>
+                <img
+                  src={`https://ssr-mock-api.vercel.app/api/img/${item.id}`}
+                  alt={item.title}
+                  style={{
+                    width: '100%',
+                    height: '200px',
+                    objectFit: 'cover',
+                    borderRadius: '8px',
+                    marginBottom: '12px',
+                  }}
+                />
+                <Typography variant="heading" style={{ marginBottom: '4px' }}>
+                  {item.title}
+                </Typography>
+                <Typography
+                  variant="body"
+                  weight="bold"
+                  style={{
+                    color: '#0070f3',
+                    marginBottom: '12px',
+                  }}
+                >
+                  {item.price.toLocaleString()}원
+                </Typography>
+                <Button variant="primary" size="sm" style={{ width: '100%' }}>
+                  상세보기
+                </Button>
+              </Card>
+            ))}
+          </div>
+
+          {feedData.items.length === 0 && (
+            <div style={{ textAlign: 'center', padding: '64px 0' }}>
+              <p style={{ fontSize: '18px', color: '#6b7280' }}>
+                피드 데이터를 불러올 수 없습니다.
+              </p>
             </div>
-          </Card>
-        ))}
-      </div>
-
-      {feedData.items.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-500">피드 데이터를 불러올 수 없습니다.</p>
+          )}
         </div>
-      )}
+      </PageLayout>
     </div>
   );
 }

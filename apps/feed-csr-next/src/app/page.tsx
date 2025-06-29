@@ -9,7 +9,7 @@ import { Footer } from '../components/Footer';
 export default function Home() {
   return (
     <div className={themeClass}>
-      <PageLayout maxWidth="xl" header={<Navigation />} footer={<Footer />}>
+      <PageLayout header={<Navigation />} footer={<Footer />}>
         <div
           style={{
             display: 'flex',
