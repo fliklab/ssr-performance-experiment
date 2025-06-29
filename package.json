@@ -2,7 +2,9 @@
   "name": "@./source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "deploy-api": "cd packages/api && vercel --prod"
+  },
   "private": true,
   "type": "module",
   "dependencies": {},
