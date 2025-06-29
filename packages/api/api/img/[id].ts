@@ -13,7 +13,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 
   // id를 3으로 나눈 나머지를 사용하여 이미지 선택 (1,2,3 중 하나)
   const imageNumber = (Number(id) % 3) + 1;
-  const imagePath = path.join(process.cwd(), 'public', 'mock-images', `mock-${imageNumber}.jpg`);
+  const imagePath = path.join(__dirname, '..', '..', 'mock-images', `mock-${imageNumber}.jpg`);
 
   try {
     const imageBuffer = fs.readFileSync(imagePath);
