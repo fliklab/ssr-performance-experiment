@@ -103,25 +103,6 @@ export const applyImageEffect = async (
       return await image.blur(blurAmount).jpeg({ quality }).toBuffer();
 
     case 4:
-      // 텍스트 오버레이 효과
-      if (textOverlay && textOverlay.text) {
-        const textSvg = createTextSvg(
-          textOverlay.text,
-          width,
-          height,
-          textOverlay.fontSize,
-          textOverlay.color,
-          textOverlay.backgroundColor,
-        );
-
-        return await image
-          .composite([{ input: textSvg, top: 0, left: 0 }])
-          .jpeg({ quality })
-          .toBuffer();
-      }
-      // 텍스트 정보가 없으면 원본 반환
-      return await image.jpeg({ quality }).toBuffer();
-    case 5:
       // 푸른 빛 효과
       return await image
         .modulate({
@@ -132,7 +113,7 @@ export const applyImageEffect = async (
         .jpeg({ quality })
         .toBuffer();
 
-    case 6:
+    case 5:
       // 녹색 빛 효과
       return await image
         .modulate({
@@ -143,7 +124,7 @@ export const applyImageEffect = async (
         .jpeg({ quality })
         .toBuffer();
 
-    case 7:
+    case 6:
       // 반전 효과
       return await image.negate().jpeg({ quality }).toBuffer();
 
