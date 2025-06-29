@@ -1,96 +1,68 @@
-# 
+# SSR Performance Experiment Monorepo
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+## 프로젝트 소개
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+이 프로젝트는 다양한 렌더링 방식(CSR, SSR, Static 등)을 비교하기 위해 만들어졌습니다. 모노레포 구조로 동일한 결과물을 제공하는 피드/상품 앱을 관리하고 성능을 측정합니다.공통 UI, 유틸리티, mock API 패키지를 포함하며, 성능 측정 자동화 및 문서화까지를 목표로 합니다.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+- **동일한 UI/UX, 데이터, 동작**: 모든 렌더링 방식에서 결과물 완전 일치
+- **디자인**: brutalism 기반 + rounded, 미니멀, 모바일 우선
+- **mock API**: Vercel Serverless Function 기반, mock data/이미지 포함
 
-## Run tasks
+## 주요 기능/요구사항
 
-To run tasks with Nx use:
+- 피드 페이지: 가로 스크롤 배너 + 인기 상품 10개 카드
+- 상품 상세 페이지: id별 2~3가지 케이스만 구현
+- SSR/CSR/Static 등 다양한 렌더링 방식 비교
+- 모든 데이터 fetch는 런타임(서버/클라이언트)에서 실시간 수행
+- 퍼포먼스 측정 자동화(Lighthouse CI, Web Vitals, Github Actions)
+- 테스트 코드(유닛/e2e) 및 문서화
 
-```sh
-npx nx <target> <project-name>
+## 폴더/패키지 구조
+
+```
+ssr-performance-experiment/
+  apps/
+    feed-csr-next/
+    feed-ssr1-next/
+    feed-ssr2-next/
+    feed-static-csr-next/
+    feed-static-ssr-next/
+  packages/
+    api/         # mock API (vercel serverless)
+    ui/          # 공통 UI 컴포넌트
+    utils/       # 공통 유틸리티/비즈니스 로직
+    perf-tools/  # 퍼포먼스 측정 유틸리티
+  .cursor/       # 작업/설계/테스트/트러블슈팅 문서
 ```
 
-For example:
+## 기술 스택
+
+- React 18+, Next.js, TypeScript
+- Nx, pnpm (모노레포/패키지 관리)
+- vanilla-extract (스타일 시스템)
+- tanstack query, zustand, recoil (데이터/상태관리)
+- Jest, React Testing Library, Playwright (테스트)
+- Lighthouse CI, Web Vitals (퍼포먼스 측정)
+- Github Actions (CI/CD)
+
+## 개발/빌드/테스트
 
 ```sh
-npx nx build myproject
+# 의존성 설치
+pnpm install
+
+# Nx 명령어 예시
+npx nx graph                # 프로젝트 의존성 시각화
+npx nx build <project>      # 앱/패키지 빌드
+npx nx serve <project>      # 앱 실행
+npx nx test <project>       # 테스트 실행
+
+# 각 앱/패키지별 README, .cursor/instructions/architecture.md 참고
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+## 문서/참고
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
-```sh
-npx nx add @nx/react
-```
-
-Use the plugin's generator to create new projects. For example, to create a new React app or library:
-
-```sh
-# Generate an app
-npx nx g @nx/react:app demo
-
-# Generate a library
-npx nx g @nx/react:lib some-lib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- 요구사항: `.cursor/rules/requirements.mdc`
+- 설계: `.cursor/instructions/architecture.md`
+- 작업/트러블슈팅: `.cursor/done/`
+- ToDo: `.cursor/instructions/tasks.md`

@@ -6,7 +6,7 @@
 - [x] nx.json, pnpm-workspace.yaml, 기본 설정 파일 작성
 - [x] apps, packages 디렉토리 구조 생성
 - [x] 공통 ESLint, Prettier, TypeScript 설정
-- [ ] README, 프로젝트 목적/구조 문서화
+- [x] README, 프로젝트 목적/구조 문서화
 
 ### Day 2: 공통 패키지/스타일/디자인 시스템
 
