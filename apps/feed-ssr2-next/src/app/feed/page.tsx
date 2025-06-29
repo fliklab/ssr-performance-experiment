@@ -4,9 +4,9 @@ import { Typography } from '@ui/base/Typography';
 import { Button } from '@ui/base/Button';
 import { Title } from '@ui/base/Title';
 import { PageLayout } from '@ui/layouts/PageLayout';
+import { Navigation } from '@ui/layouts/Navigation';
+import { Footer } from '@ui/layouts/Footer';
 import { themeClass } from '@ui/styles';
-import { Navigation } from '../../components/Navigation';
-import { Footer } from '../../components/Footer';
 
 // 외부 API 아이템 타입 정의
 interface ExternalFeedItem {
@@ -51,14 +51,18 @@ export default async function FeedPage() {
 
   return (
     <div className={themeClass}>
-      <PageLayout header={<Navigation />} footer={<Footer />}>
+      <PageLayout
+        header={<Navigation appName="Feed SSR2" />}
+        footer={
+          <Footer appName="Feed SSR2 Next" appType="SSR2 방식" renderingMethod="App Router SSR" />
+        }
+      >
         <Title
           title="피드 목록"
           description="SSR2 방식으로 로드된 피드 데이터입니다."
           size="lg"
           align="center"
         />
-
         <div
           style={{
             display: 'grid',

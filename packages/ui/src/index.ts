@@ -6,6 +6,8 @@ export * from './base/Typography';
 
 // layouts
 export * from './layouts/Container';
+export * from './layouts/Navigation';
+export * from './layouts/Footer';
 export * from './layouts/PageLayout';
 
 // complex

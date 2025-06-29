@@ -7,7 +7,7 @@ export const card = style({
   padding: '24px',
   transition: 'box-shadow 0.2s',
   width: '100%',
-  maxWidth: '360px',
+  maxWidth: '240px',
   margin: '0 auto',
   '@media': {
     '(max-width: 600px)': {

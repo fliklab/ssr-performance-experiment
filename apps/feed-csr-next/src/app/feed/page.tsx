@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import { Button } from '@ui/base/Button';
 import { Title } from '@ui/base/Title';
 import { PageLayout } from '@ui/layouts/PageLayout';
+import { Navigation } from '@ui/layouts/Navigation';
+import { Footer } from '@ui/layouts/Footer';
 import { Card } from '@ui/base/Card';
 import { Typography } from '@ui/base/Typography';
 import { themeClass } from '@ui/styles';
-import { Navigation } from '../../components/Navigation';
-import { Footer } from '../../components/Footer';
 
 interface FeedItem {
   id: number;
@@ -49,7 +49,16 @@ export default function FeedPage() {
 
   return (
     <div className={themeClass}>
-      <PageLayout header={<Navigation />} footer={<Footer />}>
+      <PageLayout
+        header={<Navigation appName="Feed CSR" isClient={true} />}
+        footer={
+          <Footer
+            appName="Feed CSR Next"
+            appType="CSR 방식"
+            renderingMethod="Client-side Rendering"
+          />
+        }
+      >
         <Title
           title="피드 목록"
           description="CSR 방식으로 로드된 피드 데이터입니다."
@@ -112,12 +121,7 @@ export default function FeedPage() {
                 >
                   {item.price.toLocaleString()}원
                 </Typography>
-                <Button
-                  variant="primary"
-                  size="sm"
-                  style={{ width: '100%' }}
-                  onClick={() => alert(`${item.title} 상세보기`)}
-                >
+                <Button variant="primary" size="sm" style={{ width: '100%' }}>
                   상세보기
                 </Button>
               </Card>

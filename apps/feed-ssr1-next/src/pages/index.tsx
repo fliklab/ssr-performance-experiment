@@ -1,89 +1,12 @@
 import { GetServerSideProps } from 'next';
-import Link from 'next/link';
 import { Card } from '@ui/base/Card';
 import { Typography } from '@ui/base/Typography';
 import { Button } from '@ui/base/Button';
 import { Title } from '@ui/base/Title';
 import { PageLayout } from '@ui/layouts/PageLayout';
+import { Navigation } from '@ui/layouts/Navigation';
+import { Footer } from '@ui/layouts/Footer';
 import { themeClass } from '@ui/styles';
-
-// Navigation과 Footer 컴포넌트 생성 (CSR, SSR2와 동일한 구조)
-const Navigation = () => {
-  return (
-    <nav
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '16px 0',
-      }}
-    >
-      <Link
-        href="/"
-        style={{
-          fontSize: '20px',
-          fontWeight: '700',
-          color: '#1f2937',
-          textDecoration: 'none',
-        }}
-      >
-        Feed SSR1
-      </Link>
-
-      <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-        <Link
-          href="/"
-          style={{
-            color: '#6b7280',
-            textDecoration: 'none',
-            fontWeight: '500',
-          }}
-        >
-          홈
-        </Link>
-        <Link
-          href="/"
-          style={{
-            color: '#6b7280',
-            textDecoration: 'none',
-            fontWeight: '500',
-          }}
-        >
-          피드
-        </Link>
-      </div>
-    </nav>
-  );
-};
-
-const Footer = () => {
-  return (
-    <div
-      style={{
-        textAlign: 'center',
-        color: '#6b7280',
-        fontSize: '14px',
-        padding: '16px 0',
-      }}
-    >
-      <p style={{ margin: 0 }}>© 2024 Feed SSR1 Next. SSR 성능 실험 프로젝트입니다.</p>
-      <div
-        style={{
-          marginTop: '8px',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '16px',
-        }}
-      >
-        <span>SSR1 방식</span>
-        <span>•</span>
-        <span>Next.js Pages Router</span>
-        <span>•</span>
-        <span>getServerSideProps</span>
-      </div>
-    </div>
-  );
-};
 
 // Feed 아이템 타입 정의
 export interface FeedItem {
@@ -106,7 +29,17 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
 const Home = ({ feed }: HomeProps) => {
   return (
     <div className={themeClass}>
-      <PageLayout header={<Navigation />} footer={<Footer />}>
+      <PageLayout
+        header={<Navigation appName="Feed SSR1" />}
+        footer={
+          <Footer
+            appName="Feed SSR1 Next"
+            appType="SSR1 방식"
+            renderingMethod="getServerSideProps"
+            framework="Next.js Pages Router"
+          />
+        }
+      >
         <div style={{ padding: '32px 0' }}>
           <Title
             title="피드 목록"
@@ -114,7 +47,6 @@ const Home = ({ feed }: HomeProps) => {
             size="lg"
             align="center"
           />
-
           <div
             style={{
               display: 'grid',

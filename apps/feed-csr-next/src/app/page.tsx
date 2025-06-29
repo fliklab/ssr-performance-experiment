@@ -3,14 +3,23 @@
 import { Button } from '@ui/base/Button';
 import { Title } from '@ui/base/Title';
 import { PageLayout } from '@ui/layouts/PageLayout';
+import { Navigation } from '@ui/layouts/Navigation';
+import { Footer } from '@ui/layouts/Footer';
 import { themeClass } from '@ui/styles';
-import { Navigation } from '../components/Navigation';
-import { Footer } from '../components/Footer';
 
 export default function Home() {
   return (
     <div className={themeClass}>
-      <PageLayout header={<Navigation />} footer={<Footer />}>
+      <PageLayout
+        header={<Navigation appName="Feed CSR" isClient={true} />}
+        footer={
+          <Footer
+            appName="Feed CSR Next"
+            appType="CSR 방식"
+            renderingMethod="Client-side Rendering"
+          />
+        }
+      >
         <div
           style={{
             display: 'flex',
@@ -27,7 +36,6 @@ export default function Home() {
             align="center"
           />
           <div style={{ display: 'flex', gap: '16px' }}>
-            <Button onClick={() => alert('공통 Button 컴포넌트!')}>공통 Button 테스트</Button>
             <Button variant="outline">
               <a href="/feed" style={{ textDecoration: 'none', color: 'inherit' }}>
                 피드 보기
