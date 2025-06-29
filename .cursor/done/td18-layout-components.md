@@ -83,7 +83,6 @@
 
 // 전체 페이지 레이아웃
 <PageLayout
-  maxWidth="xl"
   header={<nav>네비게이션</nav>}
   footer={<div>푸터</div>}
 >

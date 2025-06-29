@@ -43,8 +43,10 @@ export default function Home() {
           </p>
           <div style={{ display: 'flex', gap: '16px' }}>
             <Button onClick={() => alert('공통 Button 컴포넌트!')}>공통 Button 테스트</Button>
-            <Button variant="outline" onClick={() => (window.location.href = '/feed')}>
-              피드 보기
+            <Button variant="outline">
+              <a href="/feed" style={{ textDecoration: 'none', color: 'inherit' }}>
+                피드 보기
+              </a>
             </Button>
           </div>
         </div>
