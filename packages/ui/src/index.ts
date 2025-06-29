@@ -1,6 +1,7 @@
 // base
 export * from './base/Button';
 export * from './base/Card';
+export * from './base/Title';
 export * from './base/Typography';
 
 // layouts

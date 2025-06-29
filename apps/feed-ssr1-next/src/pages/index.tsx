@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Card } from '@ui/base/Card';
 import { Typography } from '@ui/base/Typography';
 import { Button } from '@ui/base/Button';
+import { Title } from '@ui/base/Title';
 import { PageLayout } from '@ui/layouts/PageLayout';
 import { themeClass } from '@ui/styles';
 
@@ -107,26 +108,12 @@ const Home = ({ feed }: HomeProps) => {
     <div className={themeClass}>
       <PageLayout header={<Navigation />} footer={<Footer />}>
         <div style={{ padding: '32px 0' }}>
-          <h1
-            style={{
-              fontSize: '32px',
-              fontWeight: '700',
-              color: '#1f2937',
-              marginBottom: '8px',
-              textAlign: 'center',
-            }}
-          >
-            피드 목록
-          </h1>
-          <p
-            style={{
-              color: '#6b7280',
-              textAlign: 'center',
-              marginBottom: '32px',
-            }}
-          >
-            SSR1 방식으로 로드된 피드 데이터입니다.
-          </p>
+          <Title
+            title="피드 목록"
+            description="SSR1 방식으로 로드된 피드 데이터입니다."
+            size="lg"
+            align="center"
+          />
 
           <div
             style={{

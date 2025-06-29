@@ -2,6 +2,7 @@
 import { Card } from '@ui/base/Card';
 import { Typography } from '@ui/base/Typography';
 import { Button } from '@ui/base/Button';
+import { Title } from '@ui/base/Title';
 import { PageLayout } from '@ui/layouts/PageLayout';
 import { themeClass } from '@ui/styles';
 import { Navigation } from '../../components/Navigation';
@@ -51,77 +52,59 @@ export default async function FeedPage() {
   return (
     <div className={themeClass}>
       <PageLayout header={<Navigation />} footer={<Footer />}>
-        <div style={{ padding: '32px 0' }}>
-          <h1
-            style={{
-              fontSize: '32px',
-              fontWeight: '700',
-              color: '#1f2937',
-              marginBottom: '8px',
-              textAlign: 'center',
-            }}
-          >
-            피드 목록
-          </h1>
-          <p
-            style={{
-              color: '#6b7280',
-              textAlign: 'center',
-              marginBottom: '32px',
-            }}
-          >
-            SSR2 방식으로 로드된 피드 데이터입니다.
-          </p>
+        <Title
+          title="피드 목록"
+          description="SSR2 방식으로 로드된 피드 데이터입니다."
+          size="lg"
+          align="center"
+        />
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-              gap: '24px',
-              marginTop: '32px',
-            }}
-          >
-            {feedData.items.map(item => (
-              <Card key={item.id}>
-                <img
-                  src={`https://ssr-mock-api.vercel.app/api/img/${item.id}`}
-                  alt={item.title}
-                  style={{
-                    width: '100%',
-                    height: '200px',
-                    objectFit: 'cover',
-                    borderRadius: '8px',
-                    marginBottom: '12px',
-                  }}
-                />
-                <Typography variant="heading" style={{ marginBottom: '4px' }}>
-                  {item.title}
-                </Typography>
-                <Typography
-                  variant="body"
-                  weight="bold"
-                  style={{
-                    color: '#0070f3',
-                    marginBottom: '12px',
-                  }}
-                >
-                  {item.price.toLocaleString()}원
-                </Typography>
-                <Button variant="primary" size="sm" style={{ width: '100%' }}>
-                  상세보기
-                </Button>
-              </Card>
-            ))}
-          </div>
-
-          {feedData.items.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '64px 0' }}>
-              <p style={{ fontSize: '18px', color: '#6b7280' }}>
-                피드 데이터를 불러올 수 없습니다.
-              </p>
-            </div>
-          )}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+            gap: '24px',
+            marginTop: '32px',
+          }}
+        >
+          {feedData.items.map(item => (
+            <Card key={item.id}>
+              <img
+                src={`https://ssr-mock-api.vercel.app/api/img/${item.id}`}
+                alt={item.title}
+                style={{
+                  width: '100%',
+                  height: '200px',
+                  objectFit: 'cover',
+                  borderRadius: '8px',
+                  marginBottom: '12px',
+                }}
+              />
+              <Typography variant="heading" style={{ marginBottom: '4px' }}>
+                {item.title}
+              </Typography>
+              <Typography
+                variant="body"
+                weight="bold"
+                style={{
+                  color: '#0070f3',
+                  marginBottom: '12px',
+                }}
+              >
+                {item.price.toLocaleString()}원
+              </Typography>
+              <Button variant="primary" size="sm" style={{ width: '100%' }}>
+                상세보기
+              </Button>
+            </Card>
+          ))}
         </div>
+
+        {feedData.items.length === 0 && (
+          <div style={{ textAlign: 'center', padding: '64px 0' }}>
+            <p style={{ fontSize: '18px', color: '#6b7280' }}>피드 데이터를 불러올 수 없습니다.</p>
+          </div>
+        )}
       </PageLayout>
     </div>
   );
