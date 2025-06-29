@@ -45,7 +45,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     res.setHeader('Content-Type', 'image/jpeg');
     res.setHeader('Content-Disposition', `inline; filename="image-${id}-${effectName}.jpg"`);
-    res.setHeader('Cache-Control', 'public, max-age=3600'); // 1시간 캐싱
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate'); // 캐싱 비활성화
+    res.setHeader('Pragma', 'no-cache'); // HTTP/1.0 호환성
+    res.setHeader('Expires', '0'); // 즉시 만료
     res.status(200).send(processedImageBuffer);
   } catch (error) {
     console.error('이미지 처리 에러:', error);
