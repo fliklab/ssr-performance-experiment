@@ -22,7 +22,7 @@
 ### Day 3: Feed 앱(CSR/SSR1/SSR2) 기본 구현
 
 - [x] feed-csr-next 앱 생성 및 기본 라우팅/페이지 구조 (외부 이미지 도메인 허용 포함)
-- [ ] CSR에서 구현할 기능에 대한 테스트 코드 작성
+- [x] CSR에서 구현할 기능에 대한 테스트 코드 작성
 - [ ] feed-ssr1-next 앱 생성 및 SSR1 방식 데이터 fetch 구조 구현
 - [ ] feed-ssr2-next 앱 생성 및 SSR2 방식 데이터 fetch/SSR 구조 구현
 - [ ] SSR기능에 대해 구현할 기능에 대해서 테스트 코드 작성 병행

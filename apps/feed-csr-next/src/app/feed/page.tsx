@@ -11,15 +11,25 @@ interface FeedItem {
   price: number;
 }
 
+const MOCK_API_DOMAIN = process.env.MOCK_API_DOMAIN;
+
 export default function FeedPage() {
   const [feed, setFeed] = useState<FeedItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(`https://${MOCK_API_DOMAIN}/api/feed`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('API 오류');
+        return res.json();
+      })
       .then(data => {
         setFeed(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('피드 데이터를 불러오지 못했습니다.');
         setLoading(false);
       });
   }, []);
@@ -29,6 +39,12 @@ export default function FeedPage() {
       <h1>Feed List</h1>
       {loading ? (
         <p>Loading...</p>
+      ) : error ? (
+        <p role="alert" style={{ color: 'red' }}>
+          {error}
+        </p>
+      ) : feed.length === 0 ? (
+        <p>피드 데이터가 없습니다.</p>
       ) : (
         <ul style={{ display: 'flex', flexWrap: 'wrap', gap: 24, justifyContent: 'center' }}>
           {feed.map(item => (
