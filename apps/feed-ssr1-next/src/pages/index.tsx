@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className={themeClass}>
       <PageLayout
-        header={<Navigation appName="Feed SSR1" />}
+        header={<Navigation appName="Feed SSR1" isClient={false} />}
         footer={
           <Footer
             appName="Feed SSR1 Next"
@@ -24,42 +24,23 @@ const Home = () => {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
             justifyContent: 'center',
+            alignItems: 'center',
             minHeight: '60vh',
-            textAlign: 'center',
-            gap: '32px',
           }}
         >
           <Title
-            title="Feed SSR1"
-            description="Next.js Pages Router와 getServerSideProps를 활용한 SSR1 방식의 피드 앱입니다."
+            title="Feed SSR1 Next"
+            description="Server-side Rendering 방식으로 구현된 피드 애플리케이션입니다. 공통 UI 컴포넌트와 레이아웃 시스템을 활용합니다."
             size="xl"
             align="center"
           />
-
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/feed">
-              <Button variant="primary" size="lg">
+          <div style={{ display: 'flex', gap: '16px' }}>
+            <Button variant="outline">
+              <Link href="/feed" style={{ textDecoration: 'none', color: 'inherit' }}>
                 피드 보기
-              </Button>
-            </Link>
-            <Button variant="outline" size="lg">
-              소개
+              </Link>
             </Button>
-          </div>
-
-          <div
-            style={{
-              maxWidth: '600px',
-              color: '#6b7280',
-              lineHeight: '1.6',
-            }}
-          >
-            <p>
-              이 앱은 SSR 성능 실험을 위해 제작되었습니다. Pages Router의 getServerSideProps를
-              사용하여 서버 사이드 렌더링을 구현했습니다.
-            </p>
           </div>
         </div>
       </PageLayout>
