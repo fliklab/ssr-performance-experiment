@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout Component Demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #f3f4f6;
+      }
+
+      /* Container styles */
+      .container {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      @media (min-width: 640px) {
+        .container {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .container {
+          padding-left: 32px;
+          padding-right: 32px;
+        }
+      }
+
+      .container-sm {
+        max-width: 640px;
+      }
+      .container-md {
+        max-width: 768px;
+      }
+      .container-lg {
+        max-width: 1024px;
+      }
+      .container-xl {
+        max-width: 1280px;
+      }
+      .container-2xl {
+        max-width: 1536px;
+      }
+      .container-full {
+        max-width: none;
+      }
+
+      /* Page layout styles */
+      .page-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        width: 100%;
+        border-bottom: 1px solid #e5e7eb;
+        background-color: #ffffff;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding: 16px 0;
+      }
+
+      .main-content {
+        width: 100%;
+        flex: 1 1 0%;
+        padding: 32px 0;
+      }
+
+      .footer {
+        width: 100%;
+        border-top: 1px solid #e5e7eb;
+        background-color: #f9fafb;
+        margin-top: auto;
+        padding: 16px 0;
+      }
+
+      /* Demo styles */
+      .demo-section {
+        background: white;
+        padding: 24px;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .visual-indicator {
+        background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        margin: 8px 0;
+      }
+
+      .width-indicator {
+        background: #fef3c7;
+        border: 2px dashed #f59e0b;
+        padding: 16px;
+        border-radius: 8px;
+        text-align: center;
+        color: #92400e;
+        font-weight: 500;
+      }
+
+      h1,
+      h2 {
+        margin-top: 0;
+        color: #374151;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .nav-item {
+        color: #6b7280;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .nav-item:hover {
+        color: #3b82f6;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1f2937;
+      }
+
+      .footer-content {
+        text-align: center;
+        color: #6b7280;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <header class="header">
+        <div class="container container-xl">
+          <nav class="nav-menu">
+            <div class="logo">Layout Demo</div>
+            <a href="#" class="nav-item">Home</a>
+            <a href="#" class="nav-item">About</a>
+            <a href="#" class="nav-item">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <div class="container container-xl">
+          <h1>Layout Component Demo</h1>
+          <p>
+            이 페이지는 레이아웃 컴포넌트들의 동작을 시각적으로 보여줍니다. 브라우저 창의 크기를
+            조절해보세요!
+          </p>
+
+          <div class="demo-section">
+            <h2>Container - Small (640px)</h2>
+            <div class="container container-sm">
+              <div class="visual-indicator">최대 너비: 640px</div>
+              <div class="width-indicator">화면이 640px보다 크면 콘텐츠가 중앙에 정렬됩니다</div>
+            </div>
+          </div>
+
+          <div class="demo-section">
+            <h2>Container - Medium (768px)</h2>
+            <div class="container container-md">
+              <div class="visual-indicator">최대 너비: 768px</div>
+              <div class="width-indicator">화면이 768px보다 크면 콘텐츠가 중앙에 정렬됩니다</div>
+            </div>
+          </div>
+
+          <div class="demo-section">
+            <h2>Container - Large (1024px)</h2>
+            <div class="container container-lg">
+              <div class="visual-indicator">최대 너비: 1024px</div>
+              <div class="width-indicator">화면이 1024px보다 크면 콘텐츠가 중앙에 정렬됩니다</div>
+            </div>
+          </div>
+
+          <div class="demo-section">
+            <h2>Container - Extra Large (1280px) - 기본값</h2>
+            <div class="container container-xl">
+              <div class="visual-indicator">최대 너비: 1280px (기본값)</div>
+              <div class="width-indicator">화면이 1280px보다 크면 콘텐츠가 중앙에 정렬됩니다</div>
+            </div>
+          </div>
+
+          <div class="demo-section">
+            <h2>Container - 2XL (1536px)</h2>
+            <div class="container container-2xl">
+              <div class="visual-indicator">최대 너비: 1536px</div>
+              <div class="width-indicator">화면이 1536px보다 크면 콘텐츠가 중앙에 정렬됩니다</div>
+            </div>
+          </div>
+
+          <div class="demo-section">
+            <h2>Container - Full Width</h2>
+            <div class="container container-full">
+              <div class="visual-indicator">최대 너비: 제한 없음 (전체 너비)</div>
+              <div class="width-indicator">화면 전체 너비를 사용합니다</div>
+            </div>
+          </div>
+
+          <div class="demo-section">
+            <h2>반응형 패딩</h2>
+            <div class="container container-lg">
+              <div class="visual-indicator">
+                모바일: 16px 패딩<br />
+                태블릿 (640px+): 24px 패딩<br />
+                데스크톱 (1024px+): 32px 패딩
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container container-xl">
+          <div class="footer-content">© 2024 Layout Demo. 레이아웃 컴포넌트 예제입니다.</div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // 현재 화면 크기를 표시하는 스크립트
+      function updateScreenSize() {
+        const width = window.innerWidth;
+        const indicators = document.querySelectorAll('.width-indicator');
+        indicators.forEach(indicator => {
+          const currentText = indicator.textContent;
+          if (!currentText.includes('현재 화면')) {
+            indicator.textContent += ` (현재 화면: ${width}px)`;
+          } else {
+            indicator.textContent = currentText.replace(
+              /\(현재 화면: \d+px\)/,
+              `(현재 화면: ${width}px)`,
+            );
+          }
+        });
+      }
+
+      updateScreenSize();
+      window.addEventListener('resize', updateScreenSize);
+    </script>
+  </body>
+</html>
