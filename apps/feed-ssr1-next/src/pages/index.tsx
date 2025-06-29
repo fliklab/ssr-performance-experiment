@@ -13,7 +13,7 @@ interface HomeProps {
 }
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const res = await fetch(`http://${process.env.NEXT_PUBLIC_MOCK_API_DOMAIN}/api/feed`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_MOCK_API_DOMAIN}/api/feed`);
   const feed = await res.json();
   return { props: { feed } };
 };
