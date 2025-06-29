@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 dotenv.config({ path: path.resolve(__dirname, '.env.local') });
 
-const MOCK_API_DOMAIN = process.env.MOCK_API_DOMAIN;
+const MOCK_API_DOMAIN = process.env.NEXT_PUBLIC_MOCK_API_DOMAIN;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

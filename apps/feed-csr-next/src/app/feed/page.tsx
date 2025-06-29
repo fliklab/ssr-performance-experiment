@@ -11,7 +11,7 @@ interface FeedItem {
   price: number;
 }
 
-const MOCK_API_DOMAIN = process.env.MOCK_API_DOMAIN;
+const MOCK_API_DOMAIN = process.env.NEXT_PUBLIC_MOCK_API_DOMAIN;
 
 export default function FeedPage() {
   const [feed, setFeed] = useState<FeedItem[]>([]);
@@ -19,7 +19,7 @@ export default function FeedPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`https://${MOCK_API_DOMAIN}/api/feed`)
+    fetch(`${MOCK_API_DOMAIN}/api/feed`)
       .then(res => {
         if (!res.ok) throw new Error('API 오류');
         return res.json();

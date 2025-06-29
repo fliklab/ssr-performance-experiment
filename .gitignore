@@ -42,3 +42,6 @@ Thumbs.db
 .nx/workspace-data
 .github/instructions/nx.instructions.md
 .vercel
+
+.env
+.env.local
