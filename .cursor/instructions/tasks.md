@@ -3,7 +3,7 @@
 ### Day 1: 모노레포 및 프로젝트 초기화
 
 - [x] pnpm, Nx 기반 모노레포 초기화
-- [ ] nx.json, pnpm-workspace.yaml, 기본 설정 파일 작성
+- [x] nx.json, pnpm-workspace.yaml, 기본 설정 파일 작성
 - [ ] apps, packages 디렉토리 구조 생성
 - [ ] 공통 ESLint, Prettier, TypeScript 설정
 - [ ] README, 프로젝트 목적/구조 문서화
