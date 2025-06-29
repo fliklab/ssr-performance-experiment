@@ -1,0 +1,9 @@
+{
+  "name": "@ssr-performance/utils",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "description": "공통 유틸리티/비즈니스 로직 패키지",
+  "sideEffects": false
+}
