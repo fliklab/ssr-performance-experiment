@@ -16,5 +16,107 @@
     "title": "Bird on the tree",
     "image": "/mock-images/mock-3.jpg",
     "price": 34000
+  },
+  {
+    "id": 4,
+    "title": "Forest Walk",
+    "image": "/api/img/4",
+    "price": 45000
+  },
+  {
+    "id": 5,
+    "title": "Circle Design",
+    "image": "/api/img/5",
+    "price": 28000
+  },
+  {
+    "id": 6,
+    "title": "Nature View",
+    "image": "/api/img/6",
+    "price": 52000
+  },
+  {
+    "id": 7,
+    "title": "Wooden Path",
+    "image": "/api/img/7",
+    "price": 39000
+  },
+  {
+    "id": 8,
+    "title": "Modern Shape",
+    "image": "/api/img/8",
+    "price": 41000
+  },
+  {
+    "id": 9,
+    "title": "Tree Life",
+    "image": "/api/img/9",
+    "price": 23000
+  },
+  {
+    "id": 10,
+    "title": "Natural Beauty",
+    "image": "/api/img/10",
+    "price": 47000
+  },
+  {
+    "id": 11,
+    "title": "Autumn Colors",
+    "image": "/api/img/11",
+    "price": 31000
+  },
+  {
+    "id": 12,
+    "title": "Mountain View",
+    "image": "/api/img/12",
+    "price": 56000
+  },
+  {
+    "id": 13,
+    "title": "Sunrise Path",
+    "image": "/api/img/13",
+    "price": 43000
+  },
+  {
+    "id": 14,
+    "title": "Geometric Art",
+    "image": "/api/img/14",
+    "price": 38000
+  },
+  {
+    "id": 15,
+    "title": "Forest Dreams",
+    "image": "/api/img/15",
+    "price": 29000
+  },
+  {
+    "id": 16,
+    "title": "Morning Walk",
+    "image": "/api/img/16",
+    "price": 44000
+  },
+  {
+    "id": 17,
+    "title": "Abstract Design",
+    "image": "/api/img/17",
+    "price": 35000
+  },
+  {
+    "id": 18,
+    "title": "Peaceful Nature",
+    "image": "/api/img/18",
+    "price": 48000
+  },
+  {
+    "id": 19,
+    "title": "Woodland Path",
+    "image": "/api/img/19",
+    "price": 33000
+  },
+  {
+    "id": 20,
+    "title": "Modern Art",
+    "image": "/api/img/20",
+    "price": 51000
   }
 ]
