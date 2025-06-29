@@ -6,6 +6,13 @@ globalStyle('*, *::before, *::after', {
   padding: 0,
 });
 
+// 디버그용: reset.css가 로드되었는지 확인하는 마커
+globalStyle('body', {
+  vars: {
+    '--reset-css-loaded': 'true',
+  },
+});
+
 globalStyle('html, body', {
   height: '100%',
   background: '#fff',

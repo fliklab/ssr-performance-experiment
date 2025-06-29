@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import '@ui/styles/reset.css'; // 전역 reset 스타일 직접 import
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
