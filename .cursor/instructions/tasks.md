@@ -21,16 +21,18 @@
 
 ### Day 3: Feed 앱(CSR/SSR1/SSR2) 기본 구현
 
-- [ ] 구현할 기능에 대해서 테스트 코드 작성
-- [ ] feed-csr-next 앱 생성 및 기본 라우팅/페이지 구조
+- [x] feed-csr-next 앱 생성 및 기본 라우팅/페이지 구조 (외부 이미지 도메인 허용 포함)
+- [ ] CSR에서 구현할 기능에 대한 테스트 코드 작성
 - [ ] feed-ssr1-next 앱 생성 및 SSR1 방식 데이터 fetch 구조 구현
 - [ ] feed-ssr2-next 앱 생성 및 SSR2 방식 데이터 fetch/SSR 구조 구현
+- [ ] SSR기능에 대해 구현할 기능에 대해서 테스트 코드 작성 병행
 - [ ] 공통 컴포넌트/스타일/유틸리티 연동
 - [ ] zustand, recoil, tanstack query 기본 세팅 및 샘플 적용
 
 ### Day 4: Static 방식, 퍼포먼스 자동화, 테스트
 
 - [ ] feed-static-csr-next, feed-static-ssr-next 앱 생성 및 구조 구현
+- [ ] 테스트 코드 작성
 - [ ] mock API 연동 및 실시간 데이터 fetch 흐름 구현
 - [ ] Lighthouse CI, Web Vitals 기반 퍼포먼스 측정 자동화(Github Actions)
 - [ ] Vitest, React Testing Library, Playwright 등 테스트 코드 scaffold
