@@ -13,11 +13,15 @@
 - [x] packages/ui: 공통 UI 컴포넌트 패키지 생성 (디자인 시스템 구조)
 - [x] packages/utils: 공통 유틸리티 패키지 생성
 - [ ] packages/api: mock API 패키지(Vercel serverless) 생성
+- [x] UI 패키지에 대한 unit 테스트 코드 작성 및 통과
+- [x] UTILS 패키지에 대한 unit 테스트 코드 작성 및 통과
+- [ ] API 패키지에 대한 unit 테스트 코드 작성 및 통과
 - [ ] vanilla-extract 기반 공통 스타일 시스템 구축
 - [ ] 디자인 시스템 토큰/스타일 가이드 작성
 
 ### Day 3: Feed 앱(CSR/SSR1/SSR2) 기본 구현
 
+- [ ] 구현할 기능에 대해서 테스트 코드 작성
 - [ ] feed-csr-next 앱 생성 및 기본 라우팅/페이지 구조
 - [ ] feed-ssr1-next 앱 생성 및 SSR1 방식 데이터 fetch 구조 구현
 - [ ] feed-ssr2-next 앱 생성 및 SSR2 방식 데이터 fetch/SSR 구조 구현
@@ -29,7 +33,7 @@
 - [ ] feed-static-csr-next, feed-static-ssr-next 앱 생성 및 구조 구현
 - [ ] mock API 연동 및 실시간 데이터 fetch 흐름 구현
 - [ ] Lighthouse CI, Web Vitals 기반 퍼포먼스 측정 자동화(Github Actions)
-- [ ] Jest, React Testing Library, Playwright 등 테스트 코드 scaffold
+- [ ] Vitest, React Testing Library, Playwright 등 테스트 코드 scaffold
 - [ ] 각 앱/패키지별 문서화(README, 데이터 흐름, 구조 등)
 
 ### Day 5: 통합/최적화/문서화

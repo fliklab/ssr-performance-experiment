@@ -19,7 +19,7 @@
 - **tanstack query** (데이터 fetch 및 캐싱)
 - **zustand, recoil** (상태관리)
 - **Lighthouse CI, Web Vitals** (퍼포먼스 측정)
-- **Jest, React Testing Library** (유닛/통합 테스트)
+- **Vitest, React Testing Library** (유닛/통합 테스트)
 - **Playwright, Cypress** (E2E 테스트)
 - **Github Actions** (CI/CD, 퍼포먼스 리포트 자동화)
 
@@ -82,7 +82,7 @@ ssr-performance-test/
 ### 3.5. 성능/테스트/문서화
 
 - **퍼포먼스 측정**: Lighthouse CI, Web Vitals 등으로 자동화, 결과는 markdown+웹 리포트 제공
-- **테스트**: 유닛/통합/엔드투엔드 테스트를 apps/packages별로 분리 관리
+- **테스트**: 유닛/통합/엔드투엔드 테스트는 **Vitest**(unit/integration), **Playwright/Cypress**(e2e)로 apps/packages별로 분리 관리
 - **문서화**: 모든 설계/작업/테스트/트러블슈팅 문서는 instructions, done, reports 등으로 관리
 
 ### 3.6. 기타

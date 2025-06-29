@@ -56,7 +56,7 @@ ssr-performance-test/
 
 ### 7. 문서화 및 테스트
 - 각 앱의 README에 SSR1/SSR2/Static 등 데이터 흐름 다이어그램 및 fetch 타이밍 명시
-- 테스트 코드(유닛/e2e)는 apps/packages별로 분리 관리
+- 테스트 코드(유닛/e2e)는 **Vitest**(unit/integration), **Playwright/Cypress**(e2e)로 apps/packages별로 분리 관리
 - 모든 문서(`.cursor/rules/requirements.mdc`, `.cursor/instructions/architecture.md`, `.cursor/instructions/tasks.md`, `.cursor/instuctions/test.md`)는 작업 전후로 항상 검토 및 업데이트
 
 ### 8. 기타
