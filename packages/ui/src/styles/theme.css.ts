@@ -1,4 +1,5 @@
 import { createThemeContract, createTheme } from '@vanilla-extract/css';
+import './reset.css'; // 전역 reset 스타일 적용
 
 // 디자인 토큰
 export const vars = createThemeContract({
