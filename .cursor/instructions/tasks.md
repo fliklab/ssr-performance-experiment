@@ -12,7 +12,7 @@
 
 - [x] packages/ui: 공통 UI 컴포넌트 패키지 생성 (디자인 시스템 구조)
 - [x] packages/utils: 공통 유틸리티 패키지 생성
-- [ ] packages/api: mock API 패키지(Vercel serverless) 생성
+- [x] packages/api: mock API 패키지(Vercel serverless) 생성
 - [x] UI 패키지에 대한 unit 테스트 코드 작성 및 통과
 - [x] UTILS 패키지에 대한 unit 테스트 코드 작성 및 통과
 - [ ] API 패키지에 대한 unit 테스트 코드 작성 및 통과
