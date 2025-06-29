@@ -1,4 +1,6 @@
-const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin');
+const { createVanillaExtractPlugin } =
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  require('@vanilla-extract/next-plugin');
 const withVanillaExtract = createVanillaExtractPlugin();
 
 /** @type {import('next').NextConfig} */
