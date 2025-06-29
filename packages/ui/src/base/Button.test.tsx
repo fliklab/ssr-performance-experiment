@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/vitest';
 import { Button } from './Button';
-import '@testing-library/jest-dom';
 
 describe('Button', () => {
   it('children을 렌더링한다', () => {
@@ -21,8 +21,12 @@ describe('Button', () => {
 
   it('onClick 이벤트가 동작한다', () => {
     const handleClick = vi.fn();
-    render(<Button onClick={handleClick}>클릭</Button>);
-    fireEvent.click(screen.getByText('클릭'));
+    render(
+      <Button onClick={handleClick} data-testid="click-btn">
+        클릭
+      </Button>,
+    );
+    fireEvent.click(screen.getByTestId('click-btn'));
     expect(handleClick).toHaveBeenCalled();
   });
 });

@@ -15,6 +15,6 @@ describe('formatPrice', () => {
   });
 
   it('음수를 포맷한다', () => {
-    expect(formatPrice(-500)).toBe('₩-500');
+    expect(formatPrice(-500)).toBe('-₩500');
   });
 });
