@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "Brutal Banner",
+    "title": "Walk on the Wood",
     "image": "/mock-images/mock-1.jpg",
     "price": 12000
   },
@@ -9,6 +9,12 @@
     "id": 2,
     "title": "Rounded Product",
     "image": "/mock-images/mock-2.jpg",
+    "price": 34000
+  },
+  {
+    "id": 3,
+    "title": "Bird on the tree",
+    "image": "/mock-images/mock-3.jpg",
     "price": 34000
   }
 ]
