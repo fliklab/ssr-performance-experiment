@@ -4,5 +4,7 @@
   "private": true,
   "description": "Vercel serverless 기반 mock API 패키지",
   "sideEffects": false,
-  "scripts": {}
+  "scripts": {
+    "test": "vitest run"
+  }
 }
