@@ -1,5 +1,5 @@
 import { createThemeContract, createTheme } from '@vanilla-extract/css';
-import './reset.css'; // 전역 reset 스타일 적용
+// Note: reset.css는 각 앱에서 직접 import 해야 함
 
 // 디자인 토큰
 export const vars = createThemeContract({

@@ -1,6 +1,4 @@
-import { GetServerSideProps } from 'next';
-import { Card } from '@ui/base/Card';
-import { Typography } from '@ui/base/Typography';
+import Link from 'next/link';
 import { Button } from '@ui/base/Button';
 import { Title } from '@ui/base/Title';
 import { PageLayout } from '@ui/layouts/PageLayout';
@@ -8,25 +6,7 @@ import { Navigation } from '@ui/layouts/Navigation';
 import { Footer } from '@ui/layouts/Footer';
 import { themeClass } from '@ui/styles';
 
-// Feed 아이템 타입 정의
-export interface FeedItem {
-  id: number;
-  title: string;
-  image: string;
-  price: number;
-}
-
-interface HomeProps {
-  feed: FeedItem[];
-}
-
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const res = await fetch(`https://ssr-mock-api.vercel.app/api/feed`);
-  const feed = await res.json();
-  return { props: { feed } };
-};
-
-const Home = ({ feed }: HomeProps) => {
+const Home = () => {
   return (
     <div className={themeClass}>
       <PageLayout
@@ -40,57 +20,46 @@ const Home = ({ feed }: HomeProps) => {
           />
         }
       >
-        <div style={{ padding: '32px 0' }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: '60vh',
+            textAlign: 'center',
+            gap: '32px',
+          }}
+        >
           <Title
-            title="피드 목록"
-            description="SSR1 방식으로 로드된 피드 데이터입니다."
-            size="lg"
+            title="Feed SSR1"
+            description="Next.js Pages Router와 getServerSideProps를 활용한 SSR1 방식의 피드 앱입니다."
+            size="xl"
             align="center"
           />
+
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <Link href="/feed">
+              <Button variant="primary" size="lg">
+                피드 보기
+              </Button>
+            </Link>
+            <Button variant="outline" size="lg">
+              소개
+            </Button>
+          </div>
+
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-              gap: '24px',
-              marginTop: '32px',
+              maxWidth: '600px',
+              color: '#6b7280',
+              lineHeight: '1.6',
             }}
           >
-            {feed.map(item => (
-              <Card key={item.id}>
-                <img
-                  src={`https://ssr-mock-api.vercel.app/api/img/${item.id}`}
-                  alt={item.title}
-                  style={{
-                    width: '100%',
-                    height: '200px',
-                    objectFit: 'cover',
-                    borderRadius: '8px',
-                    marginBottom: '12px',
-                  }}
-                />
-                <Typography variant="heading" style={{ marginBottom: '4px' }}>
-                  {item.title}
-                </Typography>
-                <Typography
-                  variant="body"
-                  weight="bold"
-                  style={{
-                    color: '#0070f3',
-                    marginBottom: '12px',
-                  }}
-                >
-                  {item.price.toLocaleString()}원
-                </Typography>
-                <Button
-                  variant="primary"
-                  size="sm"
-                  style={{ width: '100%' }}
-                  onClick={() => alert(`${item.title} 상세보기`)}
-                >
-                  상세보기
-                </Button>
-              </Card>
-            ))}
+            <p>
+              이 앱은 SSR 성능 실험을 위해 제작되었습니다. Pages Router의 getServerSideProps를
+              사용하여 서버 사이드 렌더링을 구현했습니다.
+            </p>
           </div>
         </div>
       </PageLayout>
