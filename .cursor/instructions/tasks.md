@@ -15,7 +15,7 @@
 - [x] packages/api: mock API 패키지(Vercel serverless) 생성
 - [x] UI 패키지에 대한 unit 테스트 코드 작성 및 통과
 - [x] UTILS 패키지에 대한 unit 테스트 코드 작성 및 통과
-- [ ] API 패키지에 대한 unit 테스트 코드 작성 및 통과
+- [x] API 패키지에 대한 unit 테스트 코드 작성 및 통과
 - [x] vanilla-extract 기반 공통 스타일 시스템 구축
 - [x] 디자인 시스템 토큰/스타일 가이드 작성
 
