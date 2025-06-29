@@ -2,28 +2,7 @@
   "name": "@./source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "build": "nx run-many --target=build",
-    "test": "nx run-many --target=test",
-    "lint": "nx run-many --target=lint",
-    "format": "nx run-many --target=format",
-    "check": "nx run-many --target=check",
-    "clean": "nx run-many --target=clean",
-    "dev": "nx run-many --target=dev"
-  },
-  "functions": {
-    "api": {
-      "handler": "packages/api/src/index.ts",
-      "events": [
-        {
-          "http": {
-            "path": "/",
-            "method": "feed"
-          }
-        }
-      ]
-    }
-  },
+  "scripts": {},
   "private": true,
   "type": "module",
   "dependencies": {},
