@@ -10,7 +10,7 @@
 
 ### Day 2: 공통 패키지/스타일/디자인 시스템
 
-- [ ] packages/ui: 공통 UI 컴포넌트 패키지 생성 (디자인 시스템 구조)
+- [x] packages/ui: 공통 UI 컴포넌트 패키지 생성 (디자인 시스템 구조)
 - [ ] packages/utils: 공통 유틸리티 패키지 생성
 - [ ] packages/api: mock API 패키지(Vercel serverless) 생성
 - [ ] vanilla-extract 기반 공통 스타일 시스템 구축
