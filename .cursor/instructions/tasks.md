@@ -27,6 +27,7 @@
 - [x] SSR기능에 대해 구현할 기능에 대해서 테스트 코드 작성 병행
 - [ ] feed-ssr2-next 앱 생성 및 SSR2 방식 데이터 fetch/SSR 구조 구현
 - [x] 공통 컴포넌트/스타일/유틸리티 연동
+- [x] CSR 앱에 PageLayout 시스템 적용 및 UI 개선
 - [ ] zustand, recoil, tanstack query 기본 세팅 및 샘플 적용
 
 ### Day 4: Static 방식, 퍼포먼스 자동화, 테스트
