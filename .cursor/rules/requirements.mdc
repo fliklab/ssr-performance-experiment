@@ -1,0 +1,65 @@
+---
+description: Check this rule for requirements
+globs: 
+alwaysApply: false
+---
+## 핵심 기능 요구사항 (구체화)
+
+이 프로젝트는 다양한 렌더링 방식(CSR, SSR, Static 등)으로 동일한 결과물을 제공하는 앱을 모노레포 구조로 관리합니다. Backend API는 Vercel Serverless Function 기반의 mock API로 제공하며, mock data와 이미지는 레포에 포함합니다.
+
+### 1. 주요 기능
+- **피드 페이지**: 가로 스크롤 배너 + 인기 상품 10개 카드
+- **상품 상세 페이지**: id별로 2~3가지 케이스만 구현(실제 상품 다양성은 중요하지 않음)
+- **동일한 UI/UX, 데이터, 동작**: 모든 렌더링 방식에서 결과물은 완전히 동일해야 함
+- 디자인 컨셉: brutalism에 기반한 디자인이지만 rounded를 선호하며 꼭 필요한 선, 텍스트만 사용하며 미니멀함을 유지한다. 모바일 뷰를 우선으로 최적화된 디자인이어야 한다.
+
+### 2. 렌더링 방식 정의
+- **CSR (Client Side Rendering)**: HTML 로드 후 자바스크립트가 실행되어 클라이언트에서 데이터 fetch 및 렌더링
+- **SSR1 (Server Side Rendering 1)**: 서버에서 데이터만 fetch하여 클라이언트로 전달, 클라이언트에서 HTML 조합(렌더링)
+- **SSR2 (Server Side Rendering 2)**: 서버에서 데이터 fetch 및 HTML까지 렌더링 후 클라이언트로 전달, 클라이언트는 hydrate만 수행
+- **Static + CSR**: 정적 페이지로 빌드, 일부 영역만 클라이언트에서 fetch하여 동적으로 렌더링
+- **Static + SSR**: 정적 페이지로 빌드, 일부 영역은 SSR API를 통해 런타임에 fetch하여 렌더링
+- **공통 정책**: 모든 데이터 fetch는 서버 또는 클라이언트에서 런타임에 이루어져야 하며, 실시간 데이터 반영이 목적임(빌드타임 fetch X)
+
+### 3. 모노레포 구조 예시
+```
+ssr-performance-test/
+  apps/
+    feed-csr-next/
+    feed-ssr1-next/
+    feed-ssr2-next/
+    feed-static-csr-next/
+    feed-static-ssr-next/
+  packages/
+    api/         # mock API (vercel serverless)
+    ui/          # 공통 UI 컴포넌트(Atomic Design 등)
+    utils/       # 공통 유틸리티/비즈니스 로직
+    perf-tools/  # 퍼포먼스 측정 유틸리티
+```
+- 추후 part2(React+TS only) 추가 시, `feed-csr-react/` 등으로 확장 가능
+
+### 4. Mock API 정책
+- Vercel Serverless Function 기반 mock API를 사용
+- 로컬 개발 환경 및 배포 환경 모두 동일한 mock API 엔드포인트 사용
+- mock data, 이미지 등 정적 리소스는 레포에 포함
+
+### 5. 공통 컴포넌트/유틸리티 구조
+- **UI 컴포넌트**(`packages/ui`): 재사용 가능한 UI(Atomic Design 등)
+- **유틸리티/비즈니스 로직**(`packages/utils`): 데이터 처리, fetch, 포맷터 등
+- 타입, 스타일 등도 관심사별로 세분화하여 관리
+
+### 6. 퍼포먼스 측정 및 자동화
+- **측정 도구**: Lighthouse CI, Web Vitals, Next.js 분석 도구 등 적합한 도구 사용
+- **측정 지표**: FCP, LCP, TTI, TTFB, CLS 등 주요 Web Vitals
+- **자동화**: Github Actions에서 각 앱 배포 후 퍼포먼스 측정 → 결과를 markdown(`reports/perf-YYYYMMDD.md`)으로 저장 및 커밋
+- **웹 리포트**: 퍼포먼스 측정 결과를 웹에서 볼 수 있는 별도 페이지 제공
+
+### 7. 문서화 및 테스트
+- 각 앱의 README에 SSR1/SSR2/Static 등 데이터 흐름 다이어그램 및 fetch 타이밍 명시
+- 테스트 코드(유닛/e2e)는 apps/packages별로 분리 관리
+- 모든 문서(`.cursor/rules/requirements.mdc`, `.cursor/instructions/architecture.md`, `.cursor/instructions/tasks.md`, `.cursor/instuctions/test.md`)는 작업 전후로 항상 검토 및 업데이트
+
+### 8. 기타
+- 모든 컴포넌트/유틸리티는 Atomic하게, 재사용 가능하게 작성
+- 코드의 가독성, 관심사 분리, 유지보수성, 성능 최적화를 최우선으로 고려
+- 주요 트러블슈팅은 별도 문서로 기록 및 관리
