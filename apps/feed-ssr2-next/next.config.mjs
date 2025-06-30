@@ -21,11 +21,8 @@ const nextConfig = {
     ],
   },
 
-  // App Router에서 Server Components 최적화
-  experimental: {
-    // Server Components 관련 최적화
-    serverComponentsExternalPackages: [],
-  },
+  // Server External Packages 설정 (Next.js 15.3.4+)
+  serverExternalPackages: [],
 
   // 번들 분석을 위한 설정
   webpack: (config, { isServer }) => {

@@ -5,5 +5,14 @@
   "types": "dist/index.d.ts",
   "private": true,
   "description": "공통 유틸리티/비즈니스 로직 패키지",
-  "sideEffects": false
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "vitest",
+    "test:run": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
 }

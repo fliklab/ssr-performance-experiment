@@ -3,7 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "deploy-api": "cd packages/api && vercel --prod"
+    "deploy-api": "cd packages/api && vercel --prod",
+    "build:csr": "pnpm --filter @ssr-performance/ui run build && pnpm --filter @ssr-performance/utils run build && pnpm --filter feed-csr-next run build",
+    "build:ssr1": "pnpm --filter @ssr-performance/ui run build && pnpm --filter @ssr-performance/utils run build && pnpm --filter feed-ssr1-next run build",
+    "build:ssr2": "pnpm --filter @ssr-performance/ui run build && pnpm --filter @ssr-performance/utils run build && pnpm --filter feed-ssr2-next run build",
+    "dev:csr": "pnpm --filter feed-csr-next run dev",
+    "dev:ssr1": "pnpm --filter feed-ssr1-next run dev",
+    "dev:ssr2": "pnpm --filter feed-ssr2-next run dev"
   },
   "private": true,
   "type": "module",
