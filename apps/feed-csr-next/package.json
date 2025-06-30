@@ -2,6 +2,7 @@
   "name": "feed-csr-next",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "dev": "next dev",
     "build": "cd ../.. && pnpm --filter @ssr-performance/ui run build && pnpm --filter @ssr-performance/utils run build && cd apps/feed-csr-next && next build",

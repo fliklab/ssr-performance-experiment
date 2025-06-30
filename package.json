@@ -2,6 +2,7 @@
   "name": "@./source",
   "version": "0.0.0",
   "license": "MIT",
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "deploy-api": "cd packages/api && vercel --prod",
     "build:csr": "pnpm --filter @ssr-performance/ui run build && pnpm --filter @ssr-performance/utils run build && pnpm --filter feed-csr-next run build",
