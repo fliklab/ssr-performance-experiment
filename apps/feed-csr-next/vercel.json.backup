@@ -1,0 +1,5 @@
+{
+  "env": {
+    "NEXT_PUBLIC_MOCK_API_DOMAIN": "ssr-mock-api.vercel.app"
+  }
+}

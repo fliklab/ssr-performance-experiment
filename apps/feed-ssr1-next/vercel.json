@@ -3,10 +3,5 @@
   "outputDirectory": ".next",
   "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
   "devCommand": "cd ../.. && pnpm --filter feed-ssr1-next run dev",
-  "framework": "nextjs",
-  "functions": {
-    "pages/api/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  "framework": "nextjs"
 }
