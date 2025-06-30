@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "cd ../.. && pnpm --filter @ssr-performance/ui run build && pnpm --filter @ssr-performance/utils run build && cd apps/feed-csr-next && next build",
     "start": "next start",
     "lint": "next lint"
   },
